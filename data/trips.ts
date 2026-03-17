@@ -1,0 +1,38 @@
+export const trips = [
+    {
+        id: 1,
+        title: "Bali Beach Escape",
+        location: "Indonesia",
+        price: 900,
+        rating: 4.8,
+        image: "/bali.jpg",
+        category: "Beach",
+    },
+    {
+        id: 2,
+        title: "Paris City Tour",
+        location: "France",
+        price: 1200,
+        rating: 4.7,
+        image: "/paris.jpg",
+        category: "City",
+    },
+    {
+        id: 3,
+        title: "Dubai Luxury Trip",
+        location: "UAE",
+        price: 1500,
+        rating: 4.6,
+        image: "/dubai.jpg",
+        category: "Luxury",
+    },
+    {
+        id: 4,
+        title: "Maldives Island Vacation",
+        location: "Maldives",
+        price: 2000,
+        rating: 4.9,
+        image: "/maldives.jpg",
+        category: "Beach",
+    },
+];
