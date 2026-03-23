@@ -26,7 +26,7 @@ export default function TripCard({ trip }: any) {
                 </div>
 
                 <Link
-                    href={`/trips/${trip.id}`}
+                    href={`/trips/${trip._id}`}
                     className="block mt-3 bg-blue-600 text-white text-center py-2 rounded"
                 >
                     View Details

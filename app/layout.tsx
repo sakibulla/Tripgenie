@@ -2,7 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { Providers } from "@/components/theme-provider";
-
+import SessionProvider from "@/components/providers";
 export default function RootLayout({
   children,
 }: {
@@ -11,13 +11,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
-          <Navbar />
+        <SessionProvider>
+          <Providers>
+            <Navbar />
 
-          <main>{children}</main>
+            <main>{children}</main>
 
-          <Footer />
-        </Providers>
+            <Footer />
+          </Providers>
+        </SessionProvider>
       </body>
     </html>
   );

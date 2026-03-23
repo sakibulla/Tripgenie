@@ -1,15 +1,25 @@
 "use client";
 
-import { useState } from "react";
-import { trips } from "@/data/trips";
+import { useEffect, useState } from "react";
 import TripCard from "@/components/trips/TripCard";
 import TripFilters from "@/components/trips/TripFilters";
 
 export default function ExplorePage() {
+    const [trips, setTrips] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
 
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("");
     const [sort, setSort] = useState("");
+
+    useEffect(() => {
+        fetch("/api/trips")
+            .then((res) => res.json())
+            .then((data) => {
+                setTrips(data);
+                setLoading(false);
+            });
+    }, []);
 
     let filteredTrips = trips.filter((trip) =>
         trip.title.toLowerCase().includes(search.toLowerCase())
@@ -31,7 +41,6 @@ export default function ExplorePage() {
 
     return (
         <div className="max-w-7xl mx-auto py-16 px-6">
-
             <h1 className="text-4xl font-bold mb-8">
                 Explore Trips
             </h1>
@@ -45,14 +54,15 @@ export default function ExplorePage() {
                 setSort={setSort}
             />
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-
-                {filteredTrips.map((trip) => (
-                    <TripCard key={trip.id} trip={trip} />
-                ))}
-
-            </div>
-
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    {filteredTrips.map((trip) => (
+                        <TripCard key={trip._id} trip={trip} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
